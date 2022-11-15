@@ -7,15 +7,18 @@
 
 import SwiftUI
 
+// After the view that can represent the view controller is created,
+// this one can be used just like a normal SwiftUI view.
 struct ContentView: View {
+    @State var isPresented = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button("Show MyUIViewController") {
+            isPresented = true
         }
-        .padding()
+        .sheet(isPresented: $isPresented) {
+            MySwiftUIView()
+        }
     }
 }
 
